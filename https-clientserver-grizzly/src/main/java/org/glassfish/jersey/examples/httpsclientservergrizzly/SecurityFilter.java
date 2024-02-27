@@ -106,7 +106,7 @@ public class SecurityFilter implements ContainerRequestFilter {
         // Validate the extracted credentials
         User user;
 
-        if (username.equals("user") && password.equals("password")) {
+        if ("user".equals(username) && "password".equals(password)) {
             user = new User("user", "user");
             System.out.println("USER AUTHENTICATED");
             //        } else if (username.equals("admin") && password.equals("adminadmin")) {

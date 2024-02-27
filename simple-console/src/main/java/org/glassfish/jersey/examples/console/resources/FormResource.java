@@ -100,7 +100,7 @@ public class FormResource {
         buf.append("<html><head><title>Form results</title></head><body>");
         buf.append("<p>Hello, you entered the following information: </p><table border='1'>");
         for (String key : formData.keySet()) {
-            if (key.equals("submit")) {
+            if ("submit".equals(key)) {
                 continue;
             }
             buf.append("<tr><td>");
