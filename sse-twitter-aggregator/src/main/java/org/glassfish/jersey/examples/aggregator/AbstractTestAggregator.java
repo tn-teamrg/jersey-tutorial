@@ -40,6 +40,7 @@
 
 package org.glassfish.jersey.examples.aggregator;
 
+import java.security.SecureRandom;
 import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.logging.Level;
@@ -90,7 +91,7 @@ public abstract class AbstractTestAggregator implements DataAggregator {
         msgListener.onStart();
         running = true;
 
-        final Random rnd = new Random();
+        final Random rnd = new SecureRandom();
         final String aggregatorPrefix = getPrefix();
 
         Executors.newSingleThreadExecutor().submit(() -> {
