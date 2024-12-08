@@ -40,6 +40,7 @@
 
 package org.glassfish.jersey.examples.helloworld.test;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -230,7 +231,7 @@ public abstract class AbstractWebAppTest {
             String line;
             final Set<String> cpiNames = new HashSet<String>();
 
-            while ((line = reader.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(reader, 5_000_000)) != null) {
                 if (!line.startsWith("//")) {
                     final ConditionalPermissionInfo cpi = conditionalPermissionAdmin.newConditionalPermissionInfo(line);
                     final String cpiName = cpi.getName();
