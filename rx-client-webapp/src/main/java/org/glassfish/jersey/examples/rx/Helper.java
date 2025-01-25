@@ -40,6 +40,7 @@
 
 package org.glassfish.jersey.examples.rx;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -75,7 +76,7 @@ public class Helper {
             return new ArrayList<>(diff);
         } else {
             final List<String> countries = new ArrayList<>(limit);
-            final Random random = new Random();
+            final Random random = new SecureRandom();
 
             for (int i = 0; i < limit; i++) {
                 countries.add(diff.remove(random.nextInt(diff.size())));
@@ -86,7 +87,7 @@ public class Helper {
     }
 
     public static String getForecast() {
-        return WEATHER_CONDITIONS.get(new Random().nextInt(WEATHER_CONDITIONS.size()));
+        return WEATHER_CONDITIONS.get(new SecureRandom().nextInt(WEATHER_CONDITIONS.size()));
     }
 
     private static final List<String> COUNTRIES = Arrays.asList("Afghanistan",
