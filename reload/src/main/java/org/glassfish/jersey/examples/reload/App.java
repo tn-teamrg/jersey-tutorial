@@ -40,6 +40,7 @@
 
 package org.glassfish.jersey.examples.reload;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -186,7 +187,7 @@ public class App {
 
         try (BufferedReader r = new BufferedReader(new InputStreamReader(new FileInputStream(configFile), "UTF-8"))) {
             while (r.ready()) {
-                final String className = r.readLine();
+                final String className = BoundedLineReader.readLine(r, 5_000_000);
                 if (!className.startsWith("#")) {
                     javaFiles.add(new JavaFile(className, SRC_MAIN_JAVA));
                     LOGGER.info(String.format(" + included class %s.\n", className));

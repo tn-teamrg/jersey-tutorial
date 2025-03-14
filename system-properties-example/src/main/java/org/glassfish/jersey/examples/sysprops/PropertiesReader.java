@@ -40,6 +40,7 @@
 
 package org.glassfish.jersey.examples.sysprops;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -81,7 +82,7 @@ public class PropertiesReader implements MessageBodyReader<Set<String>> {
         final BufferedReader br = new BufferedReader(new InputStreamReader(entityStream, MessageUtils.getCharset(mediaType)));
         final Set<String> result = new HashSet<>();
         String line;
-        while ((line = br.readLine()) != null) {
+        while ((line = BoundedLineReader.readLine(br, 5_000_000)) != null) {
             result.add(line);
         }
         return result;
