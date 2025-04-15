@@ -40,6 +40,7 @@
 
 package org.glassfish.jersey.examples.tonegen;
 
+import java.nio.file.Files;
 import javax.sound.sampled.AudioFileFormat;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
@@ -139,7 +140,7 @@ public class ToneGenerator {
      */
     private static String writeWav(InputStream inputStream, int length) throws IOException {
         AudioFormat format = new AudioFormat(AudioFormat.Encoding.PCM_SIGNED, SAMPLE_RATE, 8, 1, 1, SAMPLE_RATE, false);
-        File file = File.createTempFile("wav", ".");
+        File file = Files.createTempFile("wav", ".").toFile();
         AudioSystem.write(new AudioInputStream(inputStream, format, length), AudioFileFormat.Type.WAVE, file);
         return file.getAbsolutePath();
     }
