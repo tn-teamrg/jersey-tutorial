@@ -40,6 +40,7 @@
 
 package org.glassfish.jersey.examples.helloworld;
 
+import java.security.SecureRandom;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -75,7 +76,7 @@ public class RequestScopedResourceTest extends JerseyTest {
     static final AtomicInteger dataFeed = new AtomicInteger();
 
     // to help us randomily select resource method to test
-    static final Random RANDOMIZER = new Random();
+    static final Random RANDOMIZER = new SecureRandom();
 
     // our Weld container instance
     static Weld weld;
