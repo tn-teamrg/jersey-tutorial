@@ -40,6 +40,7 @@
 
 package org.glassfish.jersey.examples.oauth.twitterclient;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -113,7 +114,7 @@ public class App {
             System.out.print("Enter the authorization code: ");
             final String verifier;
             try {
-                verifier = IN.readLine();
+                verifier = BoundedLineReader.readLine(IN, 5_000_000);
             } catch (final IOException ex) {
                 throw new RuntimeException(ex);
             }
