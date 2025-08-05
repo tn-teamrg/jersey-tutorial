@@ -40,6 +40,7 @@
 
 package org.glassfish.jersey.examples.rx.remote;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 import javax.ws.rs.DefaultValue;
@@ -69,6 +70,6 @@ public class CalculationResource {
         // Simulate long-running operation.
         Helper.sleep(350);
 
-        return new Calculation(from, to, new Random().nextInt(10000));
+        return new Calculation(from, to, new SecureRandom().nextInt(10000));
     }
 }
